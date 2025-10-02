@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Create Form</title>
+</head>
+<body>
+    <h2>Staff Create Form</h2>
+
+    <!-- Thông báo -->
+    <p th:text="${message}"></p>
+
+    <!-- Form nhập dữ liệu -->
+    <form th:action="@{/staff/create/save}" method="post" enctype="multipart/form-data"
+          th:object="${staff}">
+        <label>ID:</label>
+        <input type="text" th:field="*{id}" /><br/><br/>
+
+        <label>Fullname:</label>
+        <input type="text" th:field="*{fullname}" /><br/><br/>
+
+        <label>Gender:</label>
+        <input type="checkbox" th:field="*{gender}" /> Male?<br/><br/>
+
+        <label>Birthday:</label>
+        <input type="date" th:field="*{birthday}" /><br/><br/>
+
+        <label>Salary:</label>
+        <input type="number" step="0.01" th:field="*{salary}" /><br/><br/>
+
+        <label>Level:</label>
+        <input type="number" th:field="*{level}" /><br/><br/>
+
+        <label>Photo:</label>
+        <input type="file" name="photo_file" /><br/><br/>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <hr/>
+
+    <!-- Hiển thị thông tin Staff -->
+    <h3>Staff Info</h3>
+    <ul>
+        <li>ID: <span th:text="${staff.id}"></span></li>
+        <li>Name: <span th:text="${staff.fullname}"></span></li>
+        <li>Photo: <span th:text="${staff.photo}"></span></li>
+        <li>Gender: <span th:text="${staff.gender}"></span></li>
+        <li>Birthday: <span th:text="${#dates.format(staff.birthday, 'MM/dd/yyyy')}"></span></li>
+        <li>Salary: <span th:text="${staff.salary}"></span></li>
+        <li>Level: <span th:text="${staff.level}"></span></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title}">Title</title>
+</head>
+<body>
+    <div>
+        <a href="?lang=vi">Tiếng Việt</a> | 
+        <a href="?lang=en">English</a>
+    </div>
+    
+    <h1 th:text="#{welcome}">Welcome</h1>
+    <nav>
+        <a th:text="#{home}" href="#">Home</a> |
+        <a th:text="#{about}" href="#">About</a>
+    </nav>
+    
+    <script src="/js/language.js"></script>
+</body>
+</html>

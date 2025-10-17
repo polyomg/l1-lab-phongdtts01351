@@ -1,0 +1,24 @@
+
+CREATE DATABASE lab7bai1;
+GO
+USE lab7bai1;
+GO
+
+CREATE TABLE products (
+    id INT PRIMARY KEY IDENTITY(1,1), 
+    name NVARCHAR(100) NOT NULL,
+    price FLOAT NOT NULL,
+    createDate DATE
+);
+GO
+INSERT INTO Products (name, price, createDate) VALUES
+('Konbu', 6.0, '2002-07-01'),
+('Filo Mix', 7.0, '2001-05-20'),
+('Tourtiare', 7.45, '2009-10-07'),
+('Rhanbrau Klosterbier', 7.75, '1982-10-31'),
+('Chai', 18.00, '2010-08-14'),
+('Chang', 19.00, '2011-09-01'),
+('Aniseed Syrup', 10.00, '2012-10-22');
+GO
+SELECT * FROM products;
+GO

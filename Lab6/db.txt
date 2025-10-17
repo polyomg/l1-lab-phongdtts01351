@@ -1,0 +1,48 @@
+
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'J5Shop')
+BEGIN
+    CREATE DATABASE J5Shop;
+END
+GO
+
+USE J5Shop;
+GO
+
+DROP TABLE IF EXISTS Categories;
+GO
+
+CREATE TABLE Categories (
+    id VARCHAR(10) PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL 
+);
+GO
+CREATE TABLE Products (
+    id INT PRIMARY KEY IDENTITY(1,1), 
+    name NVARCHAR(255) NOT NULL,
+    image VARCHAR(255) NULL,
+    price FLOAT NOT NULL,
+    createdate DATE DEFAULT GETDATE(), 
+    available BIT DEFAULT 1, 
+
+    categoryid VARCHAR(10) FOREIGN KEY REFERENCES Categories(id)
+);
+GO
+
+INSERT INTO Categories (id, name) VALUES
+(N'DT', N'Điện thoại Di động'),
+(N'LT', N'Máy tính xách tay'),
+(N'TB', N'Máy tính bảng'),
+(N'TS', N'Thời trang Nam'),
+(N'GD', N'Giày dép'),
+(N'NK', N'Nước hoa'),
+(N'SA', N'Sách và Văn phòng phẩm');
+GO
+INSERT INTO Products (name, price, available, categoryid) VALUES
+(N'iPhone 15 Pro Max 256GB', 32500000, 1, 'DT'),
+(N'Laptop Dell XPS 15', 45000000, 1, 'LT'),
+(N'Áo thun Polo Nam', 550000, 0, 'TS');
+GO
+SELECT * FROM Categories;
+GO
+SELECT * FROM Products;
+GO

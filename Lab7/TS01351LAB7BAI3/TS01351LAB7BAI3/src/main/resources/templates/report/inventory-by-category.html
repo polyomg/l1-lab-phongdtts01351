@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Report</title>
+    <style>
+        body { font-family: sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+
+    <h1>TỒN KHO THEO LOẠI</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Loại hàng</th>
+                <th>Tổng giá</th>
+                <th>Số sản phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item: ${items}">
+                <td th:text="${item.group.name}"></td>
+                <td th:text="${#numbers.formatDecimal(item.sum, 1, 2)}"></td>
+                <td th:text="${item.count}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
